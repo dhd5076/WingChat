@@ -1,0 +1,38 @@
+html, body {
+    height:100%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+}
+
+.chat-window {
+    margin-bottom: 10px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fill-parent {
+    height: 500px !important;
+}
+
+li.borderless { border: 0 none !important; }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
