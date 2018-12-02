@@ -8,7 +8,9 @@ exports.login = function(req, res) {
                     console.log(err);
                 }
                 if(isMatch) {
-                    res.render('chat');
+                    getUsers(function(users) {
+                        res.render('chat', {fellas: users});
+                    });
                     req.session.user = user;
                     req.session.save();
                 } else {
@@ -50,10 +52,12 @@ exports.createUser = function(req, res) {
     }
 }
 
-exports.removeUser = function(req, res) {
-
+exports.getUsers = function(cb) {
+    Users.find({}, function(users) {
+        cb(users);
+    });
 }
 
-exports.loginUser = function(req, res) {
+exports.removeUser = function(req, res) {
 
 }

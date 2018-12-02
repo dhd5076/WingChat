@@ -1,16 +1,34 @@
 var Message = require('../models/message');
 
-exports.createMessage = function(username, content) {
-    var message = new Message({
-        username: username,
-        content: content
-    });
+exports.createMessage = function(req, res) {
+    console.log("asdasd");
+    if( req.session &&
+        req.session.user &&
+        req.body.message) {
 
-    message.save();
+        var message = new Message({
+            firstname: req.session.user.firstname,
+            sender: req.session.user.username,
+            content: req.body.message
+        });
+
+        message.save();
+
+        global.io.emit("message", message);
+    }
+    res.send("Done.");
 }
 
-exports.getMessages = function(cb) {
-    message.find({}, function(err, messages) {
-        cb(messages);
-    })
+exports.getMessages = function(req, res) {
+    Message.find({}).exec(function(err, messages) {
+        res.send(messages);
+    });
+}
+
+exports.deleteAll = function() {
+    Message.find({}, function(err, messages) {
+        messages.forEach(function(message) {
+            message.remove();
+        });
+    });
 }

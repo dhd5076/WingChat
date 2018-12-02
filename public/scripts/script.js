@@ -5,45 +5,79 @@ var MessageType = {
     STATUS: 3
   };
 
-$( document ).ready(function() {
-    console.log( "ready!" );
-    addMessage(MessageType.SELF, "dasdasdasd")
+var socket = io.connect();
 
+$( document ).ready(function() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
+
+    $.getJSON( "/message", function(data) {
+        data.forEach(function(message) {
+            if(message.content[0] == '~') {
+                addMessage(MessageType.WING, message.firstname, message.content, false);
+            } else {
+                addMessage(MessageType.STANDARD, message.firstname, message.content, false);
+            }
+        });
+      });
 });
 
-function addMessage(type, content) {
+socket.on('message', function(message) {
+    if(message.content[0] == '~') {
+        addMessage(MessageType.WING, message.firstname, message.content, true);
+    } else {
+        addMessage(MessageType.STANDARD, message.firstname, message.content, true);
+    }
+})
+
+function sendMessage() {
+    message = $('#message').val();
+    $('#message').val('')
+    if(message.length > 0) {
+        var request = $.ajax({
+            type: "POST",
+            url: "/message",
+            data: {message: message},
+            datatype: "text"
+        });
+    }
+}
+
+function addMessage(type, sender, content, animate) {
     switch(type) {
         //Standard Message
         case MessageType.STANDARD:        	
-            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">Dylan</span></div><div class=\"col-8\"><p class=\"alert-secondary p-2 rounded\">" + content + "</p></div></div><li>");
+            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><p class=\"alert-secondary p-2 rounded\">" + content + "</p></div></div><li>");
             break;
         //Self Message
         case MessageType.SELF:
-            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">John </span></div><div class=\"col-8\"><p class=\"alert-primary p-2 rounded\">" + content + "</p></div></div></li>");
+            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><p class=\"alert-primary p-2 rounded\">" + content + "</p></div></div></li>");
             break;
         //Wing Message
         case MessageType.WING:
-            $("#chat-window").append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">Dylan</span></div><div class=\"col-8\"><img src=\"images/" + content + "-wing.png\"></div></div></li>");
+            $("#chat-window").append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><img src=\"images/" + content.substring(1, content.length) + "-wing.png\"></div></div></li>");
             break;
         //Status Message
         case MessageType.STATUS:
         $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><p class=\"text-center text-secondary\">" + content + "</p></li>");
             break;
     }
-    $('#chat-window').scrollTop($(document).height());
+    if(animate) {
+        var objDiv = $("#chat-window");
+        var h = objDiv.get(0).scrollHeight;
+        objDiv.animate({scrollTop: h}, 200);
+    } else {
+        var objDiv = $("#chat-window");
+        var h = objDiv.get(0).scrollHeight;
+        objDiv.animate({scrollTop: h}, 0);
+    }
 }
 
 function sendWingMessage(wingtype) {
-    addMessage(MessageType.WING, wingtype);
-}
-
-function sendMessage() {
-    message = $('#message').val();
-    $('#message').val('')
-    if(message.length > 0) {
-        addMessage(MessageType.SELF, message);
-    }
+    $.ajax({
+        type: "POST",
+        url: "/message",
+        data: {message: "~" + wingtype}
+    });
 }

@@ -1,7 +1,15 @@
+var mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
 var MessageSchema = mongoose.Schema({
     _id: {
         type: Schema.Types.ObjectId,
         auto: true
+    },
+    firstname: {
+        type: String,
+        required: [true, 'First Name Required']
     },
     sender: {
         type: String,

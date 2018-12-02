@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var path = require('path');
 var mongoose = require('mongoose');
 var userController = require('./controllers/userController');
+var messageController = require('./controllers/messageController');
 var session = require('express-session')
 var bodyParser = require('body-parser')
 
@@ -32,6 +33,10 @@ app.get('/', function(req, res) {
 
 app.post('/', userController.login);
 
+app.post('/message', messageController.createMessage);
+
+app.get('/message', messageController.getMessages);
+
 app.get('/logout', userController.logout);
 
 app.get('/register', function(req, res) {
@@ -42,15 +47,16 @@ app.post('/register', userController.createUser);
 
 mongoose.connect('mongodb://localhost/wingchat');
 
-
-/*
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('disconnect', function(){
         console.log('user disconnected');
-      });
+    });
 });
-*/
+
+messageController.deleteAll();
+
+global.io = io;
 
 http.listen(3000, function() {
    console.log('listening on *:3000'); 
