@@ -1,70 +1,27 @@
 extends layout
 
 block content
-    .container.p-4.fill-parent
+    .container.p-4
+        .row
+            .col-12
+                h2.display-4.mb-4 Wing Chat
         .row 
-            .col-2
-                p.text-center.font-weight-bold Users
-            .col-8
-                p.text-center.font-weight-bold Messages
-            .col-2
-                p.text-center.font-weight-bold
+            .col-3
+            .col-6
+                p.h3.text-center.font-weight-bold.pb-4 Log In
         .row
-            .col-2
-                ul.list-group
-                    li.list-group-item Dylan Dunn
-            .col-8
-                .container
-                    ul.list-group.chat-window.fill-parent
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
+            .col-3
+            .col-6
+                .card
+                    .card-body
+                        form.form-group(action="/chat")
+                            .form-group-row.m-4
+                                input.p-1.form-control-plaintext(type="text" placeholder="Username")
+                            .form-group-row.m-4
+                                input.p-1.form-control-plaintext(type="password" placeholder="Password")
+                            .form-group-row.m-4
+                                span Don't already have an account? 
+                                    a(href="/register") Sign Up
+                                button.btn.btn-primary.float-right(type="submit") Submit
 
-                        li.list-group-item.borderless.text-right
-                            span.font-weight-bold Dylan 
-                            span.alert-primary.p-2.rounded Hello World
-
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-                        li.list-group-item.borderless
-                            span.font-weight-bold Dylan 
-                            span.alert-secondary.p-2.rounded Hello World
-            .col-2
-        .row
-            .col-2
-            .col-8
-                .input-group
-                    input.form-control(placeholder="Send Message..." type="text")
-                    .input-group-append
-                        button.btn.btn-outline-secondary Button
+                    

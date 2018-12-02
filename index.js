@@ -12,6 +12,14 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/chat', function(req, res) {
+    res.render('chat');
+});
+
+app.get('/register', function(req, res) {
+    res.render('chat');
+});
+
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('disconnect', function(){

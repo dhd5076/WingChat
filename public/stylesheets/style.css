@@ -14,7 +14,9 @@ html, body {
     height: 500px !important;
 }
 
-li.borderless { border: 0 none !important; }
+li.borderless { 
+    border: 0 none !important;
+ }
 
 /* width */
 ::-webkit-scrollbar {
