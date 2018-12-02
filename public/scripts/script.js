@@ -7,7 +7,7 @@ var MessageType = {
 
 $( document ).ready(function() {
     console.log( "ready!" );
-    addMessage(0, "dasdasdasd")
+    addMessage(MessageType.SELF, "dasdasdasd")
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -26,6 +26,7 @@ function addMessage(type, content) {
             break;
         //Wing Message
         case MessageType.WING:
+            $("#chat-window").append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">Dylan</span></div><div class=\"col-8\"><img src=\"images/" + content + "-wing.png\"></div></div></li>");
             break;
         //Status Message
         case MessageType.STATUS:
@@ -35,10 +36,14 @@ function addMessage(type, content) {
     $('#chat-window').scrollTop($(document).height());
 }
 
+function sendWingMessage(wingtype) {
+    addMessage(MessageType.WING, wingtype);
+}
+
 function sendMessage() {
     message = $('#message').val();
     $('#message').val('')
     if(message.length > 0) {
-        addMessage(MessageType.STATUS, message);
+        addMessage(MessageType.SELF, message);
     }
 }

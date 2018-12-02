@@ -4,78 +4,38 @@ block content
     .row 
         .col-3
         .col-6
-            p.h3.text-center.font-weight-bold.pb-4 Messages
+            p.h3.text-center.font-weight-bold.pb-4.d-none.d-md-block Messages
     .row
-        .col-2
+        .col-2.d-none.d-md-block
             ul.list-group.bg-light.pl-0
-                li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary People
+                li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary Fellas
                 li.list-group-item.borderless.pl-1.primary Dylan Dunn
-                li.list-group-item.borderless.pl-1 John Doe
-                li.list-group-item.borderless.pl-1 Jack Sparrow
-        .col-10
-            .container
+        .col-md-10.col-12
+            .container.p-1
                 ul.list-group.chat-window.fill-parent(id="chat-window")
-                    li.list-group-item.borderless
-                        .row
-                            .col-0
-                                span.font-weight-bold Dylan
-                            .col-8
-                                p.alert-secondary.p-2.rounded Hello World dasdas aedfasd asda asda asdas dadasd asd a asd as dasd a asdads
-                    li.list-group-item.borderless
-                        p.text-center.text-secondary John joined the chat!
-                    li.list-group-item.borderless
-                        .row.float-right
-                            .col-0
-                                span.font-weight-bold John 
-                            .col-8
-                                p.alert-primary.p-2.rounded Fellas Wdadasd asd a asd as dasd a asdads
-                    li.list-group-item.borderless
-                        .row
-                            .col-0
-                                span.font-weight-bold John 
-                            .col-8
-                                img(src="images/bbq-wing.png")
-                    li.list-group-item.borderless
-                        .row
-                            .col-0
-                                span.font-weight-bold Jack 
-                            .col-8
-                                img(src="images/garlic-wing.png")
-                    li.list-group-item.borderless
-                        .row
-                            .col-0
-                                span.font-weight-bold Dylan
-                            .col-8
-                                img(src="images/hot-wing.png")
-                    li.list-group-item.borderless
-                        .row
-                            .col-0
-                                span.font-weight-bold Dylan
-                            .col-8
-                                img(src="images/mild-wing.png")
     .row
-        .col-2
-        .col-10
+        .col-md-2.col-0
+        .col-md-10.col-12
             .btn-group.btn-group-sm
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Mild")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Mild" onclick="sendWingMessage('mild')")
                     img(height="24px" src="images/mild-wing.png")
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hot")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hot" onclick="sendWingMessage('hot')")
                     img(height="24px" src="images/hot-wing.png")
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Garlic Parm")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Garlic Parm" onclick="sendWingMessage('garlic')")
                     img(height="24px" src="images/garlic-wing.png")
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Country Sweet")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Country Sweet" onclick="sendWingMessage('country')")
                     img(height="24px" src="images/country-wing.png")
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hooligan")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hooligan" onclick="sendWingMessage('hooligan')")
                     img(height="24px" src="images/hooligan-wing.png")
-                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="BBQ")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="BBQ" onclick="sendWingMessage('bbq')")
                     img(height="24px" src="images/bbq-wing.png")
     .row.mt-2
-        .col-2
+        .col-3.col-sm-2
             a.btn.btn-danger(href="/logout") Logout
-        .col-10
+        .col-9.col-sm-10
             .input-group
                 input.form-control( id="message" placeholder="Send Message..." type="text")
                 .input-group-append
-                    button.btn.btn-primary(onclick="sendMessage()") Send
+                    button.btn.btn-primary(type="submit" onclick="sendMessage()") Send
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous")
     script(src="scripts/script.js")

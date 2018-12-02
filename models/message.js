@@ -11,9 +11,10 @@ var MessageSchema = mongoose.Schema({
         type: String,
         required: [true, 'Content Required']
     },
-    WingType: {
-        type: Number,
-        required: [true, 'isWing Required']
+    date: {
+        type: Date,
+        default: Date.now,
+        required: false
     }
 });
 

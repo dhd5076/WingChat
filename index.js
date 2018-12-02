@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-    console.log(req.session.user);
     if(req.session.user) {
         res.render('chat')
     } else {
@@ -33,7 +32,7 @@ app.get('/', function(req, res) {
 
 app.post('/', userController.login);
 
-
+app.get('/logout', userController.logout);
 
 app.get('/register', function(req, res) {
     res.render('register.pug');

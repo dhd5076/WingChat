@@ -11,7 +11,7 @@ html, body {
 }
 
 .fill-parent {
-    height: 500px !important;
+    height:400px;
 }
 
 li.borderless { 
@@ -25,7 +25,8 @@ li.borderless {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: #EEE;
+    border-radius: 10px;
 }
 
 /* Handle */

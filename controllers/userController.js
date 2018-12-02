@@ -21,6 +21,11 @@ exports.login = function(req, res) {
     });
 }
 
+exports.logout = function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
+}
+
 exports.createUser = function(req, res) {
     if( req.body.firstname &&
         req.body.lastname &&
