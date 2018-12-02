@@ -17,7 +17,7 @@ app.get('/chat', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
-    res.render('chat');
+    res.render('register.pug');
 });
 
 io.on('connection', function(socket){

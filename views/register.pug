@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .row
+        .col-3
+        .col-6
+            .card
+                .card-body
+                    form.form(action="/chat")
+                        .form-row.m-4
+                            input.col.form-control(type="text" placeholder="First Name" required)
+                            input.col.ml-4.form-control(type="text" placeholder="Last Name" required)
+                        .form-row.m-4
+                            input.form-control(type="text" placeholder="Username" required)
+                        .form-row.m-4
+                            input.form-control(type="password" placeholder="Password" required)
+                        .form-row.m-4
+                            span Already have an account?&nbsp
+                            a(href="/")  Login
+                        .form-row
+                            .col-10
+                            .col-2
+                                button.btn.btn-primary(type="submit") Submit

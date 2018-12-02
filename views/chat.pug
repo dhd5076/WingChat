@@ -1,58 +1,48 @@
 extends layout
 
 block content
-    .container.p-4
-        .row
-            .col-12
-                h2.display-4.mb-4 Wing Chat
-        .row 
-            .col-2
-            .col-10
-                p.h3.text-center.font-weight-bold.pb-4 Messages
-        .row
-            .col-2
-                ul.list-group.bg-light.pl-0
-                    li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary People
-                    li.list-group-item.borderless.pl-0 Dylan Dunn
-                    li.list-group-item.borderless.pl-0 John Doe
-                    li.list-group-item.borderless.pl-0 Jack Sparrow
-            .col-10
-                .container
-                    ul.list-group.chat-window.fill-parent
-                        li.list-group-item.borderless
+    .row
+        .col-2
+            ul.list-group.bg-light.pl-0
+                li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary People
+                li.list-group-item.borderless.pl-0 Dylan Dunn
+                li.list-group-item.borderless.pl-0 John Doe
+                li.list-group-item.borderless.pl-0 Jack Sparrow
+        .col-10
+            .container
+                ul.list-group.chat-window.fill-parent
+                    li.list-group-item.borderless
+                        .row
+                            .col-0
+                                span.font-weight-bold Dylan
+                            .col-8
+                                p.alert-secondary.p-2.rounded Hello World dasdas aedfasd asda asda asdas dadasd asd a asd as dasd a asdads
+                    li.list-group-item.borderless
+                        p.text-center.text-secondary John joined the chat!
+                    li.list-group-item.borderless
                             .row
-                                .col-0
-                                    span.font-weight-bold Dylan
-                                .col-8
-                                    p.alert-secondary.p-2.rounded Hello World dasdas aedfasd asda asda asdas dadasd asd a asd as dasd a asdads
-                        li.list-group-item.borderless
-                            p.text-center.text-secondary John joined the chat!
-                        li.list-group-item.borderless
-                                .row
-                                    span.font-weight-bold John 
-                                .row
-                                    p.alert-primary.p-2.rounded Fellas Wdadasd asd a asd as dasd a asdads
-                        li.list-group-item.borderless
-                                .row
-                                    span.font-weight-bold John 
-                                .row
-                                    img(src="images/bbq-wing.png")
-                        li.list-group-item.borderless
-                                .row
-                                    span.font-weight-bold Dylan
-                                .row
-                                    img(src="images/mild-wing.png")
-                        li.list-group-item.borderless
-                                .row
-                                    span.font-weight-bold Dylan
-                                .row
-                                    img(src="images/garlic-wing.png")
-                                   
-                    
-        .row
-            .col-2
-            .col-10
-                .input-group
-                    input.form-control(placeholder="Send Message..." type="text")
-                    .input-group-append
-                        button.btn.btn-primary Send
+                                span.font-weight-bold John 
+                            .row
+                                p.alert-primary.p-2.rounded Fellas Wdadasd asd a asd as dasd a asdads
+                    li.list-group-item.borderless
+                            .row
+                                span.font-weight-bold John 
+                            .row
+                                img(src="images/bbq-wing.png")
+                    li.list-group-item.borderless
+                            .row
+                                span.font-weight-bold Dylan
+                            .row
+                                img(src="images/mild-wing.png")
+                    li.list-group-item.borderless
+                            .row
+                                span.font-weight-bold Dylan
+                            .row
+                                img(src="images/garlic-wing.png")
+    .row
+        .col-2
+        .col-10
+            .input-group
+                input.form-control(placeholder="Send Message..." type="text")
+                .input-group-append
+                    button.btn.btn-primary Send

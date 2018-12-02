@@ -1,27 +1,22 @@
 extends layout
 
 block content
-    .container.p-4
-        .row
-            .col-12
-                h2.display-4.mb-4 Wing Chat
-        .row 
-            .col-3
-            .col-6
-                p.h3.text-center.font-weight-bold.pb-4 Log In
-        .row
-            .col-3
-            .col-6
-                .card
-                    .card-body
-                        form.form-group(action="/chat")
-                            .form-group-row.m-4
-                                input.p-1.form-control-plaintext(type="text" placeholder="Username")
-                            .form-group-row.m-4
-                                input.p-1.form-control-plaintext(type="password" placeholder="Password")
-                            .form-group-row.m-4
-                                span Don't already have an account? 
-                                    a(href="/register") Sign Up
-                                button.btn.btn-primary.float-right(type="submit") Submit
+    .row
+        .col-3
+        .col-6
+            .card
+                .card-body
+                    form.form(action="/chat")
+                        .form-row.m-4
+                            input.form-control(type="text" placeholder="Username" required)
+                        .form-row.m-4
+                            input.form-control(type="password" placeholder="Password" required)
+                        .form-row.m-4
+                            span Don't already have an account?&nbsp
+                            a(href="/register")  Sign Up
+                        .form-row
+                            .col-10
+                            .col-2
+                                button.btn.btn-primary(type="submit") Submit
 
                     
