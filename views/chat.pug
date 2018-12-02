@@ -56,25 +56,26 @@ block content
     .row
         .col-2
         .col-10
+            .btn-group.btn-group-sm
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Mild")
+                    img(height="24px" src="images/mild-wing.png")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hot")
+                    img(height="24px" src="images/hot-wing.png")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Garlic Parm")
+                    img(height="24px" src="images/garlic-wing.png")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Country Sweet")
+                    img(height="24px" src="images/country-wing.png")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hooligan")
+                    img(height="24px" src="images/hooligan-wing.png")
+                button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="BBQ")
+                    img(height="24px" src="images/bbq-wing.png")
+    .row.mt-2
+        .col-2
+            a.btn.btn-danger(href="/logout") Logout
+        .col-10
             .input-group
                 input.form-control( id="message" placeholder="Send Message..." type="text")
                 .input-group-append
                     button.btn.btn-primary(onclick="sendMessage()") Send
-    .row.mt-2
-        .col-2
-        .col-10
-            .btn-group.btn-group-lg
-                button.btn.btn-secondary
-                    img(src="images/mild-wing.png")
-                button.btn.btn-secondary
-                    img(src="images/hot-wing.png")
-                button.btn.btn-secondary
-                    img(src="images/garlic-wing.png")
-                button.btn.btn-secondary
-                    img(src="images/country-wing.png")
-                button.btn.btn-secondary
-                    img(src="images/hooligan-wing.png")
-                button.btn.btn-secondary
-                    img(src="images/bbq-wing.png")
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous")
     script(src="scripts/script.js")

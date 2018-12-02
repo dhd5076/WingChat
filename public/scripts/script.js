@@ -8,6 +8,10 @@ var MessageType = {
 $( document ).ready(function() {
     console.log( "ready!" );
     addMessage(0, "dasdasdasd")
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 });
 
 function addMessage(type, content) {

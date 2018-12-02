@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
-var Schema = mongoose.Schema({
+var Schema = mongoose.Schema;
+
+var UserSchema = mongoose.Schema({
     _id: {
         type: Schema.Types.ObjectId,
         auto: true
@@ -9,15 +12,15 @@ var Schema = mongoose.Schema({
         type: String,
         required: [true, 'Username Required']
     },
-    first_name: {
+    firstname: {
         type: String,
         required: [true, 'First Name Required']
     },
-    last_name: {
+    lastname: {
         type: String,
         required: [true, 'Last Name Required']
     },
-    password_hash: {
+    password: {
         type: String,
         required: [true, 'Password Required']
     }
@@ -26,9 +29,18 @@ var Schema = mongoose.Schema({
 UserSchema.pre('save', function(next) {
     var user = this;
 
-    if(!user.isModified('password_hash')) return next();
+    if(!user.isModified('password')) return next();
 
-    bcrypt.genSalt
+    bcrypt.genSalt(4, function(err, salt) {
+        if (err) return next(err);
+
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            if (err) return next(err);
+
+            user.password = hash;
+            next();
+        });
+    });
 });
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
@@ -37,3 +49,5 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+
+module.exports = mongoose.model('User', UserSchema);
