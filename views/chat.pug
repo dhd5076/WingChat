@@ -9,9 +9,10 @@ block content
         .col-2.d-none.d-md-block
             ul.list-group.bg-light.pl-0.chat-window.fill-parent
                 li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary Fellas
-                li.list-group-item.borderless.pl-1.primary Dylan Dunn
                 each fella in fellas
-                    
+                    li.list-group-item.borderless.pl-1.primary #{fella.firstname + ' ' + fella.lastname}
+                        p.badge.badge-primary #{'@' + fella.username}
+
         .col-md-10.col-12
             .container.p-1
                 ul.list-group.chat-window.fill-parent(id="chat-window")

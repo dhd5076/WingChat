@@ -1,7 +1,6 @@
 var Message = require('../models/message');
 
 exports.createMessage = function(req, res) {
-    console.log("asdasd");
     if( req.session &&
         req.session.user &&
         req.body.message) {

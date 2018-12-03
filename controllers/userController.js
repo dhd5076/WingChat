@@ -8,7 +8,7 @@ exports.login = function(req, res) {
                     console.log(err);
                 }
                 if(isMatch) {
-                    getUsers(function(users) {
+                    exports.getUsers(function(users) {
                         res.render('chat', {fellas: users});
                     });
                     req.session.user = user;
@@ -53,11 +53,13 @@ exports.createUser = function(req, res) {
 }
 
 exports.getUsers = function(cb) {
-    Users.find({}, function(users) {
+    User.find({}, function(err, users) {
         cb(users);
     });
 }
 
-exports.removeUser = function(req, res) {
-
+exports.deleteUsers = function(req, res) {
+    User.find({}, function(err, users) {
+        cb(users);
+    });
 }
