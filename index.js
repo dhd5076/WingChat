@@ -23,13 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
-    if(req.session.user) {
-        res.render('chat')
-    } else {
-        res.render('index');
-    }
-});
+app.get('/', userController.viewChat);
 
 app.post('/', userController.login);
 

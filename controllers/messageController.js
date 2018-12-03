@@ -24,6 +24,10 @@ exports.getMessages = function(req, res) {
     });
 }
 
+exports.chat = function(req, res) {
+    
+}
+
 exports.deleteAll = function() {
     Message.find({}, function(err, messages) {
         messages.forEach(function(message) {
