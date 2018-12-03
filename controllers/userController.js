@@ -9,7 +9,7 @@ exports.login = function(req, res) {
                 }
                 if(isMatch) {
                     exports.getUsers(function(users) {
-                        res.render('chat', {fellas: users});
+                        res.render('chat', {fellas: users, username: user.username});
                     });
                     req.session.user = user;
                     req.session.save();
@@ -60,6 +60,8 @@ exports.getUsers = function(cb) {
 
 exports.deleteUsers = function(req, res) {
     User.find({}, function(err, users) {
-        cb(users);
+        users.forEach(function(user) {
+            user.remove();
+        });
     });
 }

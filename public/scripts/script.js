@@ -48,7 +48,7 @@ function addMessage(type, sender, content, animate) {
     switch(type) {
         //Standard Message
         case MessageType.STANDARD:        	
-            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><p class=\"alert-secondary p-2 rounded\">" + content + "</p></div></div><li>");
+            $( "#chat-window" ).append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><p class=\"alert-secondary p-2 rounded\">" + escapeHtml(content) + "</p></div></div><li>");
             break;
         //Self Message
         case MessageType.SELF:
@@ -81,3 +81,12 @@ function sendWingMessage(wingtype) {
         data: {message: "~" + wingtype}
     });
 }
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }

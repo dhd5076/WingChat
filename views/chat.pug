@@ -4,14 +4,14 @@ block content
     .row 
         .col-3
         .col-6
-            p.h3.text-center.font-weight-bold.pb-4.d-none.d-md-block Messages
+            p.h3.text-center.font-weight-bold.pb-0.d-none.d-md-block Messages
     .row
         .col-2.d-none.d-md-block
-            ul.list-group.bg-light.pl-0.chat-window.fill-parent
-                li.list-group-item.font-weight-bold.borderless.pl-0.text-secondary Fellas
+            h4.mt-0.pt-0 Fellas
+            ul.list-group.pl-0.chat-window.fill-parent
                 each fella in fellas
-                    li.list-group-item.borderless.pl-1.primary #{fella.firstname + ' ' + fella.lastname}
-                        p.badge.badge-primary #{'@' + fella.username}
+                    li.list-group-item.borderless.pl-1.py-0.mr-1 #{fella.firstname + ' ' + fella.lastname}
+                        p.text-secondary #{'@' + fella.username}
 
         .col-md-10.col-12
             .container.p-1
