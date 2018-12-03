@@ -21,17 +21,28 @@ block content
         .col-md-10.col-12
             .btn-group.btn-group-sm
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Mild" onclick="sendWingMessage('mild')")
-                    img(height="24px" src="images/mild-wing.png")
+                    img(height="24px" src="images/mild-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hot" onclick="sendWingMessage('hot')")
-                    img(height="24px" src="images/hot-wing.png")
+                    img(height="24px" src="images/hot-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Garlic Parm" onclick="sendWingMessage('garlic')")
-                    img(height="24px" src="images/garlic-wing.png")
+                    img(height="24px" src="images/garlic-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Country Sweet" onclick="sendWingMessage('country')")
-                    img(height="24px" src="images/country-wing.png")
+                    img(height="24px" src="images/country-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="Hooligan" onclick="sendWingMessage('hooligan')")
-                    img(height="24px" src="images/hooligan-wing.png")
+                    img(height="24px" src="images/hooligan-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="BBQ" onclick="sendWingMessage('bbq')")
-                    img(height="24px" src="images/bbq-wing.png")
+                    img(height="24px" src="images/bbq-wing-md.png")
+    //-
+        .row
+            .col-md-2.col-0
+            .col-md-10.col-12.py-1
+                .btn-group.btn-group-toggle.btn-group-sm
+                    label.btn.btn-secondary Small
+                        input(type="radio" name="size" id="-md")
+                    label.btn.btn-secondary.active Medium
+                        input(type="radio" name="size" id="-md" checked) 
+                    label.btn.btn-secondary Large
+                        input(type="radio" name="size" id="-md")
     .row.mt-2
         .col-3.col-sm-2
             a.btn.btn-danger(href="/logout") Logout

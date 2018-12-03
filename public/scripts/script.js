@@ -56,7 +56,7 @@ function addMessage(type, sender, content, animate) {
             break;
         //Wing Message
         case MessageType.WING:
-            $("#chat-window").append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><img src=\"images/" + content.substring(1, content.length) + "-wing.png\"></div></div></li>");
+            $("#chat-window").append("<li class=\"list-group-item borderless\"><div class=\"row\"><div class=\"col-0\"><span class=\"font-weight-bold\">" + sender + "</span></div><div class=\"col-8\"><img src=\"images/" + content.substring(1, content.length) + ".png\"></div></div></li>");
             break;
         //Status Message
         case MessageType.STATUS:
@@ -78,7 +78,7 @@ function sendWingMessage(wingtype) {
     $.ajax({
         type: "POST",
         url: "/message",
-        data: {message: "~" + wingtype}
+        data: {message: "~" + wingtype + '-wing-md'}
     });
 }
 

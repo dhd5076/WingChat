@@ -42,9 +42,7 @@ app.post('/register', userController.createUser);
 mongoose.connect('mongodb://localhost/wingchat');
 
 io.on('connection', function(socket){
-    console.log('a user connected');
     socket.on('disconnect', function(){
-        console.log('user disconnected');
     });
 });
 

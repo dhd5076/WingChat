@@ -70,12 +70,11 @@ exports.createUser = function(req, res) {
 
 exports.getUsers = function(cb) {
     User.find({}, function(err, users) {
-        console.log(err);
         cb(users);
     });
 }
 
-exports.deleteUsers = function(req, res) {
+exports.deleteAllUsers = function(req, res) {
     User.find({}, function(err, users) {
         users.forEach(function(user) {
             user.remove();
