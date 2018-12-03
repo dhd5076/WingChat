@@ -47,7 +47,7 @@ exports.createUser = function(req, res) {
         req.body.password ) {
 
         User.find({username : req.body.username}, function(err, users) {
-            if(req.body.username.includes(' ')) {
+            if(!req.body.username.includes(' ')) {
                 if(users.length == 0) {
                     var user = new User({
                         firstname: req.body.firstname,
