@@ -74,7 +74,7 @@ exports.getUsers = function(cb) {
     });
 }
 
-exports.deleteAllUsers = function(req, res) {
+exports.deleteAll= function(req, res) {
     User.find({}, function(err, users) {
         users.forEach(function(user) {
             user.remove();

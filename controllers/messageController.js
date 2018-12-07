@@ -1,7 +1,10 @@
+const CleverbotAPI = require('cleverbot-api');
+var config = require('../config.js');
+const cleverbot = new CleverbotAPI(config.CB_API_KEY);
 var Message = require('../models/message');
 
 exports.createMessage = function(req, res) {
-    if( req.session &&
+    if ( req.session &&
         req.session.user &&
         req.body.message) {
 
@@ -15,6 +18,23 @@ exports.createMessage = function(req, res) {
 
         global.io.emit("message", message);
     }
+    //TODO: Create a new function to handle repeated message saving code
+    if (req.body.message.startsWith('@WingBot')) {
+        cleverbot.getReply({
+            input: req.body.message.replace('@WingBot','')
+        }, (err, response) => {
+            var message = new Message({
+                firstname: 'WingBot',
+                sender: '@WingBot',
+                content: response.output
+            });
+    
+            message.save();
+
+            global.io.emit("message", message);
+        });
+    }
+
     res.send("Done.");
 }
 
@@ -22,10 +42,6 @@ exports.getMessages = function(req, res) {
     Message.find({}).exec(function(err, messages) {
         res.send(messages);
     });
-}
-
-exports.chat = function(req, res) {
-    
 }
 
 exports.deleteAll = function() {

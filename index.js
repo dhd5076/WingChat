@@ -39,14 +39,12 @@ app.get('/register', function(req, res) {
 
 app.post('/register', userController.createUser);
 
-mongoose.connect('mongodb://localhost/wingchat');
+mongoose.connect('mongodb://localhost/wingchat', {useNewUrlParser: true});
 
 io.on('connection', function(socket){
     socket.on('disconnect', function(){
     });
 });
-
-messageController.deleteAll();
 
 global.io = io;
 
