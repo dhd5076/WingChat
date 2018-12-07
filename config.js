@@ -1,3 +1,3 @@
 module.exports = {
-    CB_API_KEY: 'CC7bnNhkqtI-FVQygkpPS9KHqfQ'
+    CB_API_KEY: 'API_KEY_HERE'
 }
