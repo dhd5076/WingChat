@@ -6,8 +6,10 @@ var MessageType = {
   };
 
 var socket = io.connect();
+var messageAlert = new Audio("/sounds/notification.mp3" ) ;
 
 $( document ).ready(function() {
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
