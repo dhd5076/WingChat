@@ -11,7 +11,7 @@ exports.login = function(req, res) {
                     req.session.user = user;
                     req.session.save();
                     exports.getUsers(function(users) {
-                        res.redirect('/');
+                        res.redirect('/chat');
                     });
                     req.session.user = user;
                     req.session.save();

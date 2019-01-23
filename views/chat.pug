@@ -32,17 +32,6 @@ block content
                     img(height="24px" src="images/hooligan-wing-md.png")
                 button.btn.btn-secondary(data-toggle="tooltip" data-placement="top" title="BBQ" onclick="sendWingMessage('bbq')")
                     img(height="24px" src="images/bbq-wing-md.png")
-    //-
-        .row
-            .col-md-2.col-0
-            .col-md-10.col-12.py-1
-                .btn-group.btn-group-toggle.btn-group-sm
-                    label.btn.btn-secondary Small
-                        input(type="radio" name="size" id="-md")
-                    label.btn.btn-secondary.active Medium
-                        input(type="radio" name="size" id="-md" checked) 
-                    label.btn.btn-secondary Large
-                        input(type="radio" name="size" id="-md")
     .row.mt-2
         .col-3.col-sm-2
             a.btn.btn-danger(href="/logout") Logout
@@ -51,5 +40,9 @@ block content
                 input.form-control( id="message" placeholder="Send Message..." type="text")
                 .input-group-append
                     button.btn.btn-primary(type="submit" onclick="sendMessage()") Send
+    .row.pt-4
+        .col-2.col-md-4
+        button.btn.btn-secondary.text-center.col-8.col-md-4 Check it out on Github!
+    
     script(src="https://code.jquery.com/jquery-3.3.1.min.js")
     script(src="scripts/script.js")

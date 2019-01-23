@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .row 
+        .col-lg-3.col-0
+        .col-lg-6
+            p.h3.text-center.font-weight-bold.pb-4 Statistics
+    .row
+        .col-lg-3.col-0
+        .col-lg-6
+            .card
+                .card-body.p-4
+                    .row
+                        img(width="64px" height="64px" src="/images/wingstaticon.ico")
+                        h4.display-4 WingStats&reg;
+                    .row
+                        h5 The juicest wing stat cruncher yet!
+                    .row.pt-4
+                        h6 Tutorial
+                    .row
+                        ul 
+                            li.font-weight-bold Step 1. Download your message history in JSON Format
+                            ul
+                                li Got to https://messenger.com/dyi
+                                li Sign in with your account if necessary
+                                li Click "Create File"
+                                li Make sure JSON is selected as the export format
+                                li Download the file when it is available
+                            li.font-weight-bold Step 2. Move the JSON File to the right place
+                            ul
+                                li Open the zipped file
+                                li Navigate to messages/inbox/[conversation]
+                                li Replace the file in /data with the message.json from the downloaded data
+                            li.font-weight-bold Step 3. Run the program
+                            ul
+                                li Run WingStats.exe to analyze the conversation
+                    .row.pt-4
+                        .col-4
+                        a.btn.btn-success(href="https://github.com/dhd5076/WingStats/releases/download/0.7.5/WingStats.v0.7.5.zip") Download v0.7.5

@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', userController.viewChat);
-
 app.post('/', userController.login);
+
+app.get('/chat', userController.viewChat);
 
 app.post('/message', messageController.createMessage);
 
@@ -35,6 +35,14 @@ app.get('/logout', userController.logout);
 
 app.get('/register', function(req, res) {
     res.render('register.pug');
+});
+
+app.get('/stats', function(req, res) {
+    res.render('stats.pug');
+});
+
+app.get('/', function(req, res) {
+    res.render('index');
 });
 
 app.post('/register', userController.createUser);
@@ -49,5 +57,5 @@ io.on('connection', function(socket){
 global.io = io;
 
 http.listen(8080, function() {
-   console.log('listening on *:3000'); 
+   console.log('listening on *:8080'); 
 });
