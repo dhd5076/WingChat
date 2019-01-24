@@ -1,6 +1,8 @@
 var User = require('../models/user');
+var express = require('express');
+var router = express.Router();
 
-exports.login = function(req, res) {
+router.post('/', function(req, res) {
     User.findOne({username : req.body.username}, function(err, user) {
         if(user) {
             user.comparePassword(req.body.password, function(err, isMatch) {
@@ -23,9 +25,9 @@ exports.login = function(req, res) {
             res.render('index', {errmsg: 'Username or password were incorrect'});
         }
     });
-}
+});
 
-exports.viewChat = function(req, res) {
+router.get('/chat', function(req, res) {
     if(req.session.user) {
         exports.getUsers(function(users) {
             res.render('chat', {fellas: users, username: req.session.user.username});
@@ -33,14 +35,14 @@ exports.viewChat = function(req, res) {
     } else {
         res.render('index');
     }
-}
+});
 
-exports.logout = function(req, res) {
+router.get('/logout', function(req, res) {
     req.session.destroy();
     res.redirect('/');
-}
+});
 
-exports.createUser = function(req, res) {
+router.post('/register', function(req, res) {
     if( req.body.firstname &&
         req.body.lastname &&
         req.body.username &&
@@ -66,7 +68,7 @@ exports.createUser = function(req, res) {
             }
         });
     }
-}
+});
 
 exports.getUsers = function(cb) {
     User.find({}, function(err, users) {
@@ -81,3 +83,5 @@ exports.deleteAll= function(req, res) {
         });
     });
 }
+
+module.exports = router;

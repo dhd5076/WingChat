@@ -2,8 +2,10 @@ const CleverbotAPI = require('cleverbot-api');
 var config = require('../config.js');
 const cleverbot = new CleverbotAPI(config.CB_API_KEY);
 var Message = require('../models/message');
+var express = require('express');
+var router = express.Router();
 
-exports.createMessage = function(req, res) {
+router.post('/', function(req, res) {
     if ( req.session &&
         req.session.user &&
         req.body.message) {
@@ -36,13 +38,13 @@ exports.createMessage = function(req, res) {
     }
 
     res.send("Done.");
-}
+});
 
-exports.getMessages = function(req, res) {
+router.get('/', function(req, res) {
     Message.find({}).exec(function(err, messages) {
         res.send(messages);
     });
-}
+});
 
 exports.deleteAll = function() {
     Message.find({}, function(err, messages) {
@@ -51,3 +53,5 @@ exports.deleteAll = function() {
         });
     });
 }
+
+module.exports = router;
