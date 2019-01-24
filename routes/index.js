@@ -10,9 +10,6 @@ router.use('/coins', transactionController);
 
 router.use('/', userController)
 
-//TODO: Transfer these routes to user controller 
-
-
 router.get('/register', function(req, res) {
     res.render('register.pug');
 });
