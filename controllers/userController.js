@@ -55,7 +55,8 @@ router.post('/register', function(req, res) {
                         firstname: req.body.firstname,
                         lastname: req.body.lastname,
                         username: req.body.username,
-                        password: req.body.password
+                        password: req.body.password,
+                        wings: 100
                     });
                     user.save(function(err) {
                         res.redirect('/');
@@ -73,14 +74,6 @@ router.post('/register', function(req, res) {
 exports.getUsers = function(cb) {
     User.find({}, function(err, users) {
         cb(users);
-    });
-}
-
-exports.deleteAll= function(req, res) {
-    User.find({}, function(err, users) {
-        users.forEach(function(user) {
-            user.remove();
-        });
     });
 }
 

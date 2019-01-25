@@ -41,9 +41,13 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    Message.find({}).exec(function(err, messages) {
-        res.send(messages);
-    });
+    if(!req.session.user) {
+        res.redirect('/');
+    } else {
+        Message.find({}).exec(function(err, messages) {
+            res.send(messages);
+        });
+    }
 });
 
 exports.deleteAll = function() {

@@ -4,6 +4,55 @@ block content
     .row 
         .col-lg-3.col-0
         .col-lg-6
-            p.h3.text-center.font-weight-bold.pb-4 Coming Soon!
+            p.h3.text-center.font-weight-bold.pb-4 Coins
+    .row
+        .col-lg-3.col-0
+        .col-lg-6
+            .card
+                .card-body
+                    .row.text-center
+                        .col
+                            h1
+                                img.pr-2(width="48px" src="/images/logo-icon.png")
+                                span.align-bottom=user.wings
+                    form.form(action="/coins/send" method="POST")
+                        h2.pt-4.text-center Send Wings
+                        .input-group.mb-3
+                            .input-group-prepend
+                                span.input-group-text @
+                            input.col.form-control(type="text" name="fella" placeholder="Username" required)
+                        .input-group.mb-3
+                            .input-group-prepend
+                                span.input-group-text
+                                    img(width="20px" src="/images/logo-icon.png")
+                            input.col.form-control(type="number" min="0" step="1" name="amount" placeholder="Amount" required)
+                        button.btn.btn-primary.float-right(type="submit") Send
+            .card
+                .card-body
+                    h3.text-center 
+                        span Wing
+                        span Chain&reg;
+                    table.table(style="table-layout:fixed; width:100%;")
+                        thead
+                            th
+                                small Hash
+                            th
+                                small From
+                            th
+                                small To
+                            th.text-right
+                                small Amt
+                        tbody
+                            each tran in transactions
+                                tr
+                                    td
+                                        small(style="overflow:hidden; white-space: nowrap;")=tran.hash.substring(0, 8)
+                                    td 
+                                        small(style="overflow:hidden; white-space: nowrap;")=tran.sender
+                                    td
+                                        small(style="overflow:hidden; white-space: nowrap;") @WingBot
+                                    td.text-right
+                                        small(style="overflow:hidden; white-space: nowrap;") 5
+
 
                     
