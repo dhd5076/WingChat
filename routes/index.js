@@ -3,12 +3,15 @@ var router = express.Router();
 var userController = require('../controllers/userController');
 var messageController = require('../controllers/messageController');
 var transactionController = require('../controllers/transactionController');
+var wingAPI = require('./api');
 
 router.use('/message', messageController)
 
 router.use('/coins', transactionController);
 
 router.use('/', userController)
+
+router.use('/api', wingAPI);
 
 router.get('/register', function(req, res) {
     res.render('register.pug');

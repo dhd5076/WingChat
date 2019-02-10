@@ -77,4 +77,15 @@ exports.getUsers = function(cb) {
     });
 }
 
+exports.giveAllFellasWingBalance = function() {
+    User.find({}, function(err, users) {
+        users.forEach(function(user){
+            if(!user.wings) {
+                user.wings = 0;
+                user.save();
+            }
+        });
+    });
+}
+
 module.exports = router;

@@ -25,15 +25,6 @@ router.post('/send', function(req, res){
         User.findOne({username : req.body.fella}, function(err, user) {
             if(user) {
                 User.findOne({username : req.session.user.username}, function(err, user2) {
-                    if(!user.wings) {
-                        user.wings = 100;
-                        user.save();
-                    }
-
-                    if(!user2.wings) {
-                        user2.wings = 100;
-                        user2.save();
-                    }
                     if(parseInt(user2.wings) > parseInt(req.body.amount)){
                         if(req.body.amount > 0) {
                             user2.wings -= parseInt(req.body.amount);

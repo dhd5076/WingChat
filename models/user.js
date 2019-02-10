@@ -23,6 +23,10 @@ var UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Password Required']
+    },
+    wings: {
+        type: Number,
+        required: [true, 'Wings Required']
     }
 });
 
