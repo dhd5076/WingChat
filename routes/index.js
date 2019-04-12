@@ -21,6 +21,10 @@ router.get('/stats', function(req, res) {
     res.render('stats.pug');
 });
 
+router.get('/time', function(req, res) {
+    res.render('time.pug');
+});
+
 router.get('/', function(req, res) {
     res.render('index');
 });
